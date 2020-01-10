@@ -2,7 +2,7 @@
 
 namespace MediatorPatternDemo
 {
-	public class Colleague2
+	public class Colleague2 : Colleague
     {
 		private Colleague1 colleague1;
 
@@ -11,12 +11,12 @@ namespace MediatorPatternDemo
 			this.colleague1 = colleague1;
 		}
 
-        public void Send(string message)
+        public override void Send(string message)
 		{
 			colleague1.Receive(message);
 		}
 
-		public void Receive(string message)
+		public override void Receive(string message)
 		{
 			Console.WriteLine($"[{nameof(Colleague2)}] Received '{message}'");
 		}
