@@ -6,11 +6,10 @@ namespace MediatorPatternDemo
 	{
 		static void Main(string[] args)
 		{
-			var colleague1 = new Colleague1();
-			var colleague2 = new Colleague2();
+			var mediator = new ConcreteMediator();
 
-			colleague1.Register(colleague2);
-			colleague2.Register(colleague1);
+			var colleague1 = new Colleague1(mediator);
+			var colleague2 = new Colleague2(mediator);
 
 			colleague1.Send("Hi from colleague 1");
 			colleague2.Send("Hey there, I'm colleague 2");

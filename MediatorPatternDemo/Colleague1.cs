@@ -4,13 +4,17 @@ namespace MediatorPatternDemo
 {
 	public class Colleague1 : Colleague
     {
-		private Colleague2 colleague2;
+		private readonly ConcreteMediator mediator;
 
-		public void Register(Colleague2 colleague2) => this.colleague2 = colleague2;
+		public Colleague1(ConcreteMediator mediator)
+		{
+			this.mediator = mediator;
+			mediator.Register(this);
+		}
 
 		public override void Send(string message)
 		{
-			colleague2.Receive(message);
+			this.mediator.Send(this, message);
 		}
 
 		public override void Receive(string message)
