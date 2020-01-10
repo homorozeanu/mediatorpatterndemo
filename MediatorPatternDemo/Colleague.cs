@@ -2,7 +2,19 @@
 {
 	public abstract class Colleague
 	{
-		public abstract void Send(string message);
+		protected ConcreteMediator mediator;
+
+		internal void SetMediator(ConcreteMediator mediator)
+		{
+			this.mediator = mediator;
+			mediator.Register(this);
+		}
+
+		public virtual void Send(string message)
+		{
+			this.mediator.Send(this, message);
+		}
+		
 		public abstract void Receive(string message);
 	}
 }
