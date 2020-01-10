@@ -7,7 +7,6 @@
 		internal void SetMediator(ConcreteMediator mediator)
 		{
 			this.mediator = mediator;
-			mediator.Register(this);
 		}
 
 		public virtual void Send(string message)

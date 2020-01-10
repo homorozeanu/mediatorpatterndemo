@@ -7,9 +7,12 @@ namespace MediatorPatternDemo
     {
 		private IList<Colleague> colleagues = new List<Colleague>();
 
-		public void Register(Colleague colleague)
+		public T CreateColleague<T>() where T : Colleague, new()
 		{
-			colleagues.Add(colleague);
+			var c = new T();
+			c.SetMediator(this);
+			this.colleagues.Add(c);
+			return c;
 		}
 
 		public void Send(Colleague colleague, string message)
